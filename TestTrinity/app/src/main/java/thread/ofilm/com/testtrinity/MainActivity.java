@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final  static String PREV_ACTION="music.prev";
     public final  static String NEXT_ACTION="music.next";
     public final  static String PAUSE_ACTION="music.pause";
+    public final static String STOP_ACTION="music.stop";
     public final  static String START_ACTION="music.start";
     public final static String OPENMUSIC_ACTION="music.open";
     public final static String CLOSEMUSIC_ACTION="music.close";
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final static String UNFAVOUR_ACTION="music.unfavour";
     public final static String FAVOUROPEN_ACTION="music.favour.open";
     public final static String UNFAVOURCLOSE_ACTION="music.unfavour.close";
-    private Button playButton,pauseButton,prevButton,nextButton,startButton;
+    private Button playButton,pauseButton,prevButton,nextButton,startButton,stopButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         prevButton=this.findViewById(R.id.prevbutton);
         nextButton=this.findViewById(R.id.nextbutton);
         startButton=this.findViewById(R.id.startbutton);
+        stopButton=this.findViewById(R.id.stopbutton);
     }
     private void setListener() {
         playButton.setOnClickListener(this);
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         prevButton.setOnClickListener(this);
         nextButton.setOnClickListener(this);
         startButton.setOnClickListener(this);
+        stopButton.setOnClickListener(this);
     }
     
     @Override
@@ -84,6 +87,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent4=new Intent(NEXT_ACTION);
                 intent4.setPackage("of.media.bq");
                 sendBroadcast(intent4);
+                break;
+            case R.id.stopbutton:
+                Intent intent5=new Intent(STOP_ACTION);
+                intent5.setPackage("of.media.bq");
+                sendBroadcast(intent5);
                 break;
                 default:
                     break;
